@@ -1,11 +1,12 @@
 (def moon-period 29.530588853)
 (def phase-length (/ moon-period 8))
+; current moon phase is computed relative to the new moon of 2000-01-06
 (def new-moon-start (java.time.LocalDate/of 2000 1 6))
 
 (defn moon-phase [now]
   (let [days-since (.until new-moon-start now java.time.temporal.ChronoUnit/DAYS)
-        since-new (mod days-since moon-period)
-        offsetted-day (+ since-new (/ phase-length 2))]
+        since-last-new (mod days-since moon-period)
+        offsetted-day (+ since-last-new (/ phase-length 2))]
     (cond
       ; since Java strings are stored with UTF-16,
       ; we have to represent emoji as integers, and
