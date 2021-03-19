@@ -27,7 +27,6 @@
   (String. (int-array [emoji]) 0 1))
 
 (-> (java.time.LocalDate/now)
-    ;(java.time.LocalDate/of YEAR MONTH DAY) ; uncomment this and comment out the above line to use your own date - i use this for testing
     moon-phase
     emoji-int->string
     println)
