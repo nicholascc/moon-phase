@@ -8,8 +8,7 @@
 
 (defn moon-phase [now]
   (let [days-since (.until new-moon-start now java.time.temporal.ChronoUnit/DAYS)
-        since-last-new (mod days-since moon-period)
-        offsetted-day (+ since-last-new (/ phase-length 2))]
+        since-last-new (mod days-since moon-period)]
     (condp > since-last-new
       ; since Java strings are stored with UTF-16,
       ; we have to represent emoji as integers, and
